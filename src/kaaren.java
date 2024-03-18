@@ -22,10 +22,10 @@ public class kaaren {
         }
         return tagastatav;
     }
-    public static int[][] noise(int[][] maatriks){
+    public static int[][] noise(int[][] maatriks, double intensiivsus){
         for (int i = 0; i < maatriks.length; i++) {
             for (int j = 0; j < maatriks[0].length; j++) {
-                if(Math.random()>0.8){
+                if(Math.random()>intensiivsus){
                     maatriks[i][j]=(int)(Math.random()*600);
                 }
             }
@@ -33,10 +33,36 @@ public class kaaren {
         }
         return maatriks;
     }
+    public static int[][] votasuvaline(int[][] list, int[][] uus,int pikkus){
+        int kohty= (int)((list.length-pikkus)*Math.random());
+        int kohtx= (int)((list[0].length-pikkus)*Math.random());
+        int kohtxtemp;
+        int algusx= (int)((list[0].length-pikkus)*Math.random());
+        int algusy= (int)((list.length-pikkus)*Math.random());
+        for (int i = algusy; i <algusy+pikkus ; i++) {
+            kohtxtemp=kohtx;
+            for (int j = algusx; j < algusx+pikkus; j++) {
+                uus[kohty][kohtxtemp]=list[i][j];
+                kohtxtemp++;
+            }
+            kohty++;
+        }
+        return uus;
+    }
+    public static int[][] kaos(int[][] maatriks, int tukkisuurus, int tukkidearv){
+        int[][] tagastatav=new int[maatriks.length][maatriks[0].length];
+        int pikkus;
+        for (int i = 0; i < tukkidearv; i++) {
+            pikkus=(int)(tukkisuurus*Math.random());
+            tagastatav=votasuvaline(maatriks,tagastatav,pikkus);
+
+        }
+        return tagastatav;
+    }
 
     public static void main(String[] args) {
         int[][] pilt=Pilt.lae("lennart.png");
-        pilt=Pööre.pööre(pilt,-500);
+        pilt=kaos(pilt,120,30);
         Pilt.salvesta(pilt,"pilt.png");
     }
 }
