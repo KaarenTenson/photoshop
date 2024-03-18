@@ -22,4 +22,21 @@ public class kaaren {
         }
         return tagastatav;
     }
+    public static int[][] noise(int[][] maatriks){
+        for (int i = 0; i < maatriks.length; i++) {
+            for (int j = 0; j < maatriks[0].length; j++) {
+                if(Math.random()>0.8){
+                    maatriks[i][j]=(int)(Math.random()*600);
+                }
+            }
+
+        }
+        return maatriks;
+    }
+
+    public static void main(String[] args) {
+        int[][] pilt=Pilt.lae("lennart.png");
+        pilt=Pööre.pööre(pilt,-500);
+        Pilt.salvesta(pilt,"pilt.png");
+    }
 }
