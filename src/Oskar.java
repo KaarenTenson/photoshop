@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.awt.Color;
-
-public class NäitedPilt { // Jaan Janno 2023 - jaan.janno@ut.ee
+public class Oskar { // Jaan Janno 2023 - jaan.janno@ut.ee
 
     public static void main(String[] args) {
         // lisa pildifail "lennart.png" enne jooksutamist oma projekti juurkausta! (mitte src sisse!)
@@ -13,37 +10,24 @@ public class NäitedPilt { // Jaan Janno 2023 - jaan.janno@ut.ee
         // kahevärvilise tulemuse salvestame uude faili "uus.png", otsi juurkaustas!
     }
 
-    private static int[][] sharpen(int[][] maatriks, double intensiivsus) {
-        for (int i = 0; i < maatriks.length; i++) {
-            for (int j = 0; j < maatriks[0].length; j++) {
-                if(Math.random()>intensiivsus){
-                    maatriks[i][j]=(int)(Math.random()*1000);
-                }
-            }
 
-        }
-        return maatriks;
-    }
-
-    /*/private static int[][] sharpen(int[][] pilt) {
-        int[][] kernel = {{0, -1, 0}, {-1, 5, -1}, {0, -1, 0}};
+    public static int[][] sharpen(int[][] pilt, int intensiivsus) {
+        int[][] kernel = {{0, -1, 0}, {-1, intensiivsus, -1}, {0, -1, 0}};
         int[][] teravustatudPilt = new int[pilt.length][pilt[0].length];
 
         for (int rida = 1; rida < pilt.length -1; rida++){
             for (int veerg = 1; veerg < pilt[0].length -1 ; veerg++) {
-                int sumR = 0, sumG = 0, sumB = 0;
+                int sumR = 0;
                 for (int i = -1; i <= 1; i++) {
                     for (int j = -1; j <= 1; j++) {
                         sumR += pilt[rida + i][veerg + j] * kernel[i + 1][j + 1];
-                        sumG += pilt[rida + i][veerg + j] * kernel[i + 1][j + 1];
-                        sumB += pilt[rida + i][veerg + j] * kernel[i + 1][j + 1];
                     }
                 }
                 teravustatudPilt[rida][veerg] = Math.min(255, Math.max(0, sumR));
             }
         }
         return teravustatudPilt;
-    }/*/
+    }
 
 
     static int[][] peegeldamineVerikaalselt(int[][] pilt){

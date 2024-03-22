@@ -49,7 +49,7 @@ public class kaaren {
         }
         return uus;
     }
-    public static int[][] kaos(int[][] maatriks, int tukkisuurus, int tukkidearv){
+    public static int[][] kaos(int[][] maatriks, int tukkisuurus, int tukkidearv){//võtab suvalise arvu tükke suvalises kohast, suvalise suurusega ja lisab uute maatriksisse
         int[][] tagastatav=new int[maatriks.length][maatriks[0].length];
         int pikkus;
         for (int i = 0; i < tukkidearv; i++) {
@@ -62,7 +62,7 @@ public class kaaren {
 
     public static void main(String[] args) {
         int[][] pilt=Pilt.lae("lennart.png");
-        pilt=kaos(pilt,120,30);
+        pilt= Oskar.sharpen(pilt,10);
         Pilt.salvesta(pilt,"pilt.png");
     }
 }
