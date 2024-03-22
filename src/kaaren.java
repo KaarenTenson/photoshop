@@ -62,7 +62,7 @@ public class kaaren {
 
     public static void main(String[] args) {
         int[][] pilt=Pilt.lae("lennart.png");
-        pilt= Oskar.sharpen(pilt,10);
+        pilt= Oskar.sharpen(pilt,5);
         Pilt.salvesta(pilt,"pilt.png");
     }
 }
