@@ -45,7 +45,7 @@ public class artur {
 
     public static void main(String[] args) {
         int[][] pilt = Pilt.lae("lennart.png");
-        int[][] hägusta = blur(pilt, 4.4);
+        int[][] hägusta = blur(pilt, 3);
         Pilt.salvesta(hägusta, "arturtest.png");
     }
 }

@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class kaaren {
     public static int[][] pixelate(int[][] maatriks, int ratio){
         int csum=1;
@@ -61,8 +63,6 @@ public class kaaren {
     }
 
     public static void main(String[] args) {
-        int[][] pilt=Pilt.lae("lennart.png");
-        pilt= Oskar.sharpen(pilt,5);
-        Pilt.salvesta(pilt,"pilt.png");
+        System.out.println("aa");
     }
 }
