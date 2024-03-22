@@ -44,7 +44,31 @@ public class Main {
                 case 2:
                     System.out.println("aaa");
                     break;
+                case 3:
+                    System.out.println("Sisesta intensiivsus");
+                    int intesiivsus=myObj.nextInt();
+                    myObj.nextLine();
+                    pilt=kaaren.pixelate(pilt,intesiivsus);
+                    jätka(myObj);
+                    break;
+                case 4:
+                    System.out.println("Sisesta intensiivsus");
+                    int intesiivsusnoise=myObj.nextInt();
+                    pilt=kaaren.noise(pilt,intesiivsusnoise);
+                    jätka(myObj);
+                    break;
+                case 5:
+                    System.out.println("Sisesta tükkisuurus");
+                    int tükkisuurus=myObj.nextInt();
+                    myObj.nextLine();
+                    System.out.println("sisesta tükkide arv");
+                    int tükkidearv=myObj.nextInt();
+                    myObj.nextLine();
+                    pilt=kaaren.kaos(pilt,tükkisuurus,tükkidearv);
+                    jätka(myObj);
+                    break;
             }
+
         }
     }
     public static void jätka(Scanner myObj) {

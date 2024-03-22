@@ -67,5 +67,44 @@ public class Oskar { // Jaan Janno 2023 - jaan.janno@ut.ee
     static int[][] pööra90kraadivp(int[][] pilt){
         return pööra90kraadipp(pööra90kraadipp(pööra90kraadipp(pilt)));
     }
+    public static int[][] muudaresulutsiooni(int[][] maatriks,double arv){
+        int[][] uusmaatriks=new int[(int)(maatriks.length*arv)][(int)(maatriks[0].length*arv)];
+        int arv2=1;
+        double arv3=1/(arv-1);
+        double ridabit=0;
+        int veerubit=0;
+        for (int i = 0; i < maatriks.length; i++) {
+            veerubit=0;
+            ridabit+=arv;
+            for (int j = 0; j < maatriks[0].length; j++) {
+                if(arv2<arv3){
+                    arv2+=1;
+                    uusmaatriks[i+(int)ridabit][j+veerubit]=maatriks[i][j];
+                }
+                else{
+                    if(arv3<1){
+                        for (int k = 0; k < 1/arv3; k++) {
+                            for (int l = 0; l < 1/arv3; l++) {
+                                uusmaatriks[i+k+(int)ridabit][j+l+veerubit]=maatriks[i][j];}
+                            veerubit+=1;
+                        }
+                    }
+                    else {
+                        System.out.println(j+veerubit);
+                        System.out.println(j);
+                        System.out.println();
+                        if(j+veerubit<maatriks[0].length&&(i+(int)ridabit<maatriks.length)){
+                        uusmaatriks[i+(int)ridabit][j+veerubit]=maatriks[i][j];
+                        uusmaatriks[i+(int)ridabit][j+veerubit+1]=maatriks[i][j];
+                        uusmaatriks[i+(int)ridabit+1][j+veerubit+1]=maatriks[i][j];
+                        uusmaatriks[i+(int)ridabit+1][j+veerubit]=maatriks[i][j];
+                        veerubit+=1;}
+                    }
+                }
+            }
+
+        }
+        return uusmaatriks;
+    }
 
 }
