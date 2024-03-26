@@ -10,13 +10,19 @@ public class Main {
         Scanner myObj = new Scanner(System.in);
         int tegu;
         System.out.println("Sisesta faili nimi:");
-        String path = myObj.nextLine();  // Read user input
+        String path = myObj.nextLine();
         pilt = Pilt.lae(path);
         while (true) {
             if (salvestamisTingimus == 1) {
                 System.out.println("Sisestage uue pildi nimi: ");
                 String nimi = myObj.nextLine();
-                nimi += ".png";
+                if (nimi.length() > 5) {
+                    String kasOnFailiTüüp = nimi.substring(nimi.length() - 5);
+                    if (kasOnFailiTüüp.contains(".")) { } //ei tee midagi
+                    else {
+                        nimi += ".png"; } }
+                else {
+                    nimi += ".png"; }
                 Pilt.salvesta(pilt, nimi);
                 break;
             }
@@ -42,26 +48,31 @@ public class Main {
                     jätka(myObj);
                     break;
                 case 2:
-                    System.out.println("aaa");
+                    System.out.println("Sisesta ujukomaarv vahemikus 0 kuni 10: ");
+                    double hägusus = myObj.nextDouble();
+                    myObj.nextLine();
+                    pilt=artur.blur(pilt, hägusus);
+                    jätka(myObj);
                     break;
-                case 3:
-                    System.out.println("Sisesta intensiivsus");
+                case 3: //vb mingid vahemikud case 3-5 sisestustesse, et kasutajal oleks lihtsam valida min ja max vahel?
+                    System.out.println("Sisesta intensiivsus:");
                     int intesiivsus=myObj.nextInt();
                     myObj.nextLine();
                     pilt=kaaren.pixelate(pilt,intesiivsus);
                     jätka(myObj);
                     break;
                 case 4:
-                    System.out.println("Sisesta intensiivsus");
+                    System.out.println("Sisesta intensiivsus:");
                     int intesiivsusnoise=myObj.nextInt();
+                    myObj.nextLine();
                     pilt=kaaren.noise(pilt,intesiivsusnoise);
                     jätka(myObj);
                     break;
                 case 5:
-                    System.out.println("Sisesta tükkisuurus");
+                    System.out.println("Sisesta tükisuurus:");
                     int tükkisuurus=myObj.nextInt();
                     myObj.nextLine();
-                    System.out.println("sisesta tükkide arv");
+                    System.out.println("Sisesta tükkide arv:");
                     int tükkidearv=myObj.nextInt();
                     myObj.nextLine();
                     pilt=kaaren.kaos(pilt,tükkisuurus,tükkidearv);

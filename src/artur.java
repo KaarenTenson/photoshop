@@ -17,7 +17,7 @@ public class artur {
         return tulemus;
     }
 
-    private static int[][] blur(int[][] maatriks, double sisend) {
+    public static int[][] blur(int[][] maatriks, double sisend) {
         int kõrgus = maatriks.length;
         int laius = maatriks[0].length;
         int[][] tulemus = new int[kõrgus][laius];
