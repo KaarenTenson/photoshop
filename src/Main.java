@@ -9,12 +9,12 @@ public class Main {
         int[][] pilt;
         Scanner myObj = new Scanner(System.in);
         int tegu;
-        System.out.println("Sisesta faili nimi:");
+        System.out.print("Sisesta faili nimi: ");
         String path = myObj.nextLine();
         pilt = Pilt.lae(path);
         while (true) {
             if (salvestamisTingimus == 1) {
-                System.out.println("Sisestage uue pildi nimi: ");
+                System.out.print("Sisestage uue pildi nimi: ");
                 String nimi = myObj.nextLine();
                 if (nimi.length() > 5) {
                     String kasOnFailiTüüp = nimi.substring(nimi.length() - 5);
@@ -35,9 +35,15 @@ public class Main {
             System.out.println("5 - chaos");
             System.out.println("6 - sharpen");
             System.out.println("7 - peegelda");
-            System.out.println("8 - keera");
-            System.out.println("Sisesta valik: ");
-            tegu = myObj.nextInt();
+            System.out.println("8 - pööra 90 kraadi");
+            System.out.println("9 - muuda resolutsiooni");
+            System.out.println("10 - pööra maatriksi kõiki elemente");
+            System.out.print("Sisesta valik: ");
+            try{ tegu = myObj.nextInt();}
+            catch (java.util.InputMismatchException e) {
+                System.out.print("Sisestasite vigase valiku. Proovige uuesti. ");
+                break;
+            }
             myObj.nextLine();
             switch (tegu) {
                 case 1:
@@ -78,6 +84,58 @@ public class Main {
                     pilt=kaaren.kaos(pilt,tükkisuurus,tükkidearv);
                     jätka(myObj);
                     break;
+                case 6:
+                    System.out.println("Sisesta sharpening intensiivsus ujukomaarvuna vahemikus 4.5 kuni 5.2: ");
+                    double intensiivus=myObj.nextDouble();
+                    myObj.nextLine();
+                    pilt = Oskar.sharpen(pilt, intensiivus);
+                    jätka(myObj);
+                    break;
+                case 7:
+                    System.out.println("Kas soovid antud pilti peegeldada horisontaalselt, vertikaalselt või peadiagonaali suhtes?");
+                    System.out.println("Sisesta vastavalt kas horisontaalne, vertikaalne või peadiagonaal ");
+                    String sõna = myObj.next();
+                    if (sõna.equals("horisontaalne")){
+                        pilt = Oskar.peegeldamineHorisontaalselt(pilt);
+                    }
+                    else if (sõna.equals("vertikaalne")){
+                        pilt = Oskar.peegeldamineVerikaalselt(pilt);
+
+                    }
+                    else if (sõna.equals("peadiagonaal")){
+                        pilt = Oskar.peegeldaminePeadiagonaal(pilt);
+                    }
+                    jätka(myObj);
+                    break;
+                case 8:
+                    System.out.println("Kas soovid pilti pöörata vastu- või päripäeva?");
+                    System.out.println("Sisesta vastavalt vastupäev või päripäev: ");
+                    String sõna2 = myObj.next();
+                    if (sõna2.equals("vastupäev")){
+                        pilt = Oskar.pööra90kraadipp(pilt);
+                        jätka(myObj);
+                        break;
+                    }
+                    if (sõna2.equals("päripäev")) {
+                        pilt = Oskar.pööra90kraadivp(pilt);
+                        jätka(myObj);
+                        break;
+                    }
+                case 9:
+                    System.out.println("Sisesta ujukomaarv resolutsiooni muutmiseks vahemikus 1.5 kuni 2.5: ");
+                    double arv=myObj.nextDouble();
+                    myObj.nextLine();
+                    pilt = Oskar.muudaresulutsiooni(pilt, arv);
+                    jätka(myObj);
+                    break;
+                case 10:
+                    System.out.println("Sisesta arv maatriksi elementide (pikslite) pööramiseks: ");
+                    int arv2=myObj.nextInt();
+                    myObj.nextLine();
+                    pilt = Pööre.pööre(pilt, arv2);
+                    jätka(myObj);
+                    break;
+
             }
 
         }

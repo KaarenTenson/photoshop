@@ -1,18 +1,14 @@
-public class Oskar { // Jaan Janno 2023 - jaan.janno@ut.ee
+public class Oskar {
 
     public static void main(String[] args) {
-        // lisa pildifail "lennart.png" enne jooksutamist oma projekti juurkausta! (mitte src sisse!)
-        int[][] pilt = Pilt.lae("C:\\Users\\manni\\IdeaProjects\\OOP_projekt\\lennart.png"); // loeme pildifailist arvumaatriksi.
-        // iga element kirjeldab ühe pildi punkti ehk piksli heleduse.
-        // anname pildi töötle meetodile argumendiks.
-        int[][] uus = sharpen(pilt, 200);
+        int[][] pilt = Pilt.lae("lennart.png"); // loeme pildifailist arvumaatriksi.
+        int[][] uus = sharpen(pilt, 4.5);
         Pilt.salvesta(uus, "uus.png");
-        // kahevärvilise tulemuse salvestame uude faili "uus.png", otsi juurkaustas!
     }
 
 
-    public static int[][] sharpen(int[][] pilt, int intensiivsus) {
-        int[][] kernel = {{0, -1, 0}, {-1, intensiivsus, -1}, {0, -1, 0}};
+    public static int[][] sharpen(int[][] pilt, double intensiivsus) {
+        double[][] kernel = {{0, -1, 0}, {-1, intensiivsus, -1}, {0, -1, 0}};
         int[][] teravustatudPilt = new int[pilt.length][pilt[0].length];
 
         for (int rida = 1; rida < pilt.length -1; rida++){
@@ -29,7 +25,7 @@ public class Oskar { // Jaan Janno 2023 - jaan.janno@ut.ee
         return teravustatudPilt;
     }
 
-
+    //
     static int[][] peegeldamineVerikaalselt(int[][] pilt){
         int N=pilt.length,M=pilt[0].length;
         int[][] uus=new int[N][M];
