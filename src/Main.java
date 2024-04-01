@@ -61,21 +61,21 @@ public class Main {
                     jätka(myObj);
                     break;
                 case 3: //vb mingid vahemikud case 3-5 sisestustesse, et kasutajal oleks lihtsam valida min ja max vahel?
-                    System.out.println("Sisesta intensiivsus:");
+                    System.out.println("Sisesta täisarv vahemikus 2 kuni 50:");
                     int intesiivsus=myObj.nextInt();
                     myObj.nextLine();
                     pilt=kaaren.pixelate(pilt,intesiivsus);
                     jätka(myObj);
                     break;
                 case 4:
-                    System.out.println("Sisesta intensiivsus:");
+                    System.out.println("Sisesta ujukomaarv vahemikus 0 kuni 1:");
                     int intesiivsusnoise=myObj.nextInt();
                     myObj.nextLine();
                     pilt=kaaren.noise(pilt,intesiivsusnoise);
                     jätka(myObj);
                     break;
                 case 5:
-                    System.out.println("Sisesta tükisuurus:");
+                    System.out.println("Sisesta tükisuurus, mis soovitavalt vähemalt 10:");
                     int tükkisuurus=myObj.nextInt();
                     myObj.nextLine();
                     System.out.println("Sisesta tükkide arv:");
@@ -124,7 +124,7 @@ public class Main {
                         break;
                     }
                 case 9:
-                    System.out.println("Sisesta ujukomaarv resolutsiooni muutmiseks vahemikus 1.5 kuni 2.5: ");
+                    System.out.println("Resolutsiooni muutmiseks sisesta ujukomaarv, mis lõppeb 5-ga (nt 2,5) või täisarv vahemikus 0.5 kuni 4: ");
                     double arv=myObj.nextDouble();
                     myObj.nextLine();
                     pilt = Oskar.muudaresulutsiooni(pilt, arv);

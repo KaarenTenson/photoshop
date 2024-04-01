@@ -63,16 +63,17 @@ public class Oskar {
     static int[][] pööra90kraadivp(int[][] pilt){
         return pööra90kraadipp(pööra90kraadipp(pööra90kraadipp(pilt)));
     }
+    //muudab pildi resulutsiooni (arv saab olla ainult täisarv või arv, mille %0.5=0)
     public static int[][] muudaresulutsiooni(int[][] maatriks,double arv){
-        if(arv%1!=0&&arv>1){
+        if(arv%1!=0&&arv>1){ //kontrollib, kas tegemist on ujukomaarvuga, mis ei ole väiksem kui 1
             System.out.println(arv);
-            return muudaresulutsiooni(muudaresulutsiooni(maatriks,arv*2),0.5);
+            return muudaresulutsiooni(muudaresulutsiooni(maatriks,arv*2),0.5);//arvutab näiteks 1,5 suurendusega välja, nii et suurendab alguses 3 korda ning siis teeb 2 korda väiksemaks
         }
-        int[][] uusmaatriks=new int[(int)(maatriks.length*arv)][(int)(maatriks[0].length*arv)];
+        int[][] uusmaatriks=new int[(int)(maatriks.length*arv)][(int)(maatriks[0].length*arv)]; //uus maatriksi, kuhu mahub uue relsulatsiooniga pildi pikslite andmed
         int arv2;
         double arv3=1/(arv-1);
         double ridabit=0;
-        int veerubit=0;
+        int veerubit;
         for (int i = 0; i < maatriks.length; i++) {
             veerubit=0;
             arv2=1;

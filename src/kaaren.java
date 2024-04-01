@@ -1,9 +1,11 @@
 public class kaaren {
+    //teeb alumised ja parempoolsed piksliks samaks vastavalt argumendile ratio
+    //näiteks teeb ration neljaga järgmised neli alumist ja ülemist pikslit samaks
     public static int[][] pixelate(int[][] maatriks, int ratio){
-        int csum=1;
-        int dsum=1;
-        int c=0;
-        int d=0;
+        int csum=1;//kontrollib, kas on piisavalt piksleid samaks tehtud
+        int dsum=1; //csum on all ja paremal olevate pikslite läbikäimiseks
+        int c=0;//piksli(see, mis asendab teisi) veeru indeks
+        int d=0;//piksli(see, mis asendab teisi) rea indeks
         int[][] tagastatav=new int[maatriks.length][maatriks[0].length];
         for (int i = 0; i < tagastatav.length; i++) {
             for (int j = 0; j < tagastatav[0].length; j++) {
@@ -22,10 +24,12 @@ public class kaaren {
         }
         return tagastatav;
     }
+    //teeb pildile juurde suvalisi piksleid, selleks läbib tsükkel kõik maatriksi elemndid ja vastavalt intesiivsusle
+    // ning Math.randomi tulemusele, kas lisab sinna vale või originaalse piksli
     public static int[][] noise(int[][] maatriks, double intensiivsus){
         for (int i = 0; i < maatriks.length; i++) {
             for (int j = 0; j < maatriks[0].length; j++) {
-                if(Math.random()>intensiivsus){
+                if(Math.random()<intensiivsus){ //Kui Math.random on väiksem kui intensiivsus lisab pildile vale piksli
                     maatriks[i][j]=(int)(Math.random()*600);
                 }
             }
@@ -33,6 +37,7 @@ public class kaaren {
         }
         return maatriks;
     }
+    //võtab suvalise koha ja pikkuse pildi tüki jaoks
     public static int[][] votasuvaline(int[][] list, int[][] uus,int pikkus){
         int kohty= (int)((list.length-pikkus)*Math.random());
         int kohtx= (int)((list[0].length-pikkus)*Math.random());
@@ -49,7 +54,8 @@ public class kaaren {
         }
         return uus;
     }
-    public static int[][] kaos(int[][] maatriks, int tukkisuurus, int tukkidearv){//võtab suvalise arvu tükke suvalises kohast, suvalise suurusega ja lisab uute maatriksisse
+    //võtab suvalise arvu tükke pildist suvalises kohast, suvalise suurusega ja lisab uute maatriksisse ning tagastab selle
+    public static int[][] kaos(int[][] maatriks, int tukkisuurus, int tukkidearv){
         int[][] tagastatav=new int[maatriks.length][maatriks[0].length];
         int pikkus;
         for (int i = 0; i < tukkidearv; i++) {
@@ -58,11 +64,5 @@ public class kaaren {
 
         }
         return tagastatav;
-    }
-
-    public static void main(String[] args) {
-        int[][] pilt=Pilt.lae("lennart.png");
-        pilt= Oskar.muudaresulutsiooni(pilt,4.5);
-        Pilt.salvesta(pilt,"pilt.png");
     }
 }
