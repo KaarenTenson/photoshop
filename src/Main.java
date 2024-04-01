@@ -16,11 +16,11 @@ public class Main {
             if (salvestamisTingimus == 1) {
                 System.out.print("Sisestage uue pildi nimi: ");
                 String nimi = myObj.nextLine();
-                if (nimi.length() > 5) {
+                if (nimi.length() > 5) { // kontrollib kas sisestati failitüübi lõpp või mitte
                     String kasOnFailiTüüp = nimi.substring(nimi.length() - 5);
-                    if (kasOnFailiTüüp.contains(".")) { } //ei tee midagi
+                    if (kasOnFailiTüüp.contains(".")) { } //ei tee midagi, kui on failitüübi lõpp, siis ei tee muudatusi
                     else {
-                        nimi += ".png"; } }
+                        nimi += ".png"; } } // kui pole failitüübi lõppu, siis automaatselt teeb .png failitüübiks
                 else {
                     nimi += ".png"; }
                 Pilt.salvesta(pilt, nimi);
