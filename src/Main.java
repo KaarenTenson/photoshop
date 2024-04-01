@@ -95,6 +95,7 @@ public class Main {
                     System.out.println("Kas soovid antud pilti peegeldada horisontaalselt, vertikaalselt või peadiagonaali suhtes?");
                     System.out.println("Sisesta vastavalt kas horisontaalne, vertikaalne või peadiagonaal ");
                     String sõna = myObj.next();
+                    myObj.nextLine();
                     if (sõna.equals("horisontaalne")){
                         pilt = Oskar.peegeldamineHorisontaalselt(pilt);
                     }
@@ -111,6 +112,7 @@ public class Main {
                     System.out.println("Kas soovid pilti pöörata vastu- või päripäeva?");
                     System.out.println("Sisesta vastavalt vastupäev või päripäev: ");
                     String sõna2 = myObj.next();
+                    myObj.nextLine();
                     if (sõna2.equals("vastupäev")){
                         pilt = Oskar.pööra90kraadipp(pilt);
                         jätka(myObj);
