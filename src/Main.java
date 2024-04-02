@@ -1,7 +1,5 @@
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static int salvestamisTingimus = 0;
 
@@ -26,7 +24,7 @@ public class Main {
                 Pilt.salvesta(pilt, nimi);
                 break;
             }
-            System.out.println("Monteerimise valikud");
+            System.out.println("Monteerimise valikud"); //annab kasutajale ülevaate võimalikest valikutest
             System.out.println("--------------------------");
             System.out.println("1 - brightness");
             System.out.println("2 - blur");
@@ -40,12 +38,12 @@ public class Main {
             System.out.println("10 - pööra maatriksi kõiki elemente");
             System.out.print("Sisesta valik: ");
             try{ tegu = myObj.nextInt();}
-            catch (java.util.InputMismatchException e) {
+            catch (java.util.InputMismatchException e) { //kui sisestati vigane valik, siis annab sellest kasutajale teada ja palub tal uuesti proovida
                 System.out.print("Sisestasite vigase valiku. Proovige uuesti. ");
                 break;
             }
             myObj.nextLine();
-            switch (tegu) {
+            switch (tegu) { //muudab pilti vastavalt kasutaja sisestatud arvule
                 case 1:
                     System.out.println("Sisesta täisarv vahemikus -255 kuni 255: ");
                     int sisend = myObj.nextInt();
@@ -60,7 +58,7 @@ public class Main {
                     pilt=artur.blur(pilt, hägusus);
                     jätka(myObj);
                     break;
-                case 3: //vb mingid vahemikud case 3-5 sisestustesse, et kasutajal oleks lihtsam valida min ja max vahel?
+                case 3:
                     System.out.println("Sisesta täisarv vahemikus 2 kuni 50:");
                     int intesiivsus=myObj.nextInt();
                     myObj.nextLine();
@@ -142,7 +140,7 @@ public class Main {
 
         }
     }
-    public static void jätka(Scanner myObj) {
+    public static void jätka(Scanner myObj) { //kontrollib, kas kasutaja soovib jätkata pildi töötlemisega või lõpetada
         while (true) {
             System.out.println("Kas soovid jätkata (jah/ei)?");
             String tingimus = myObj.nextLine();
