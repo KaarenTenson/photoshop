@@ -1,6 +1,8 @@
 public class kaaren {
+    //argument: Maatriks pildi andmed maatriksina, Ratio:kui palju tehakse piksleid suuremaks
     //teeb alumised ja parempoolsed piksliks samaks vastavalt argumendile ratio
     //näiteks teeb ration neljaga järgmised neli alumist ja ülemist pikslit samaks
+    //tagastab uue pildi maatriksina
     public static int[][] pixelate(int[][] maatriks, int ratio){
         int csum=1;//kontrollib, kas on piisavalt piksleid samaks tehtud
         int dsum=1; //csum on all ja paremal olevate pikslite läbikäimiseks

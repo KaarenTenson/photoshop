@@ -110,7 +110,7 @@ public class Oskar {
             arv2=1;
             if(i!=0||arv==2){ridabit+=arv-1;}
             for (int j = 0; j < maatriks[0].length; j++) {
-                 if (arv3<0) {
+                 if (arv3<0) { //kui tehakse pildi väiksemaks
                     if(arv2==1||i==maatriks.length-1||maatriks[0].length-1==j){
                         if(j+veerubit<maatriks[0].length*0.5-1&&(i+(int)ridabit<maatriks.length*0.5-1&&ridabit%1==0)){
                         uusmaatriks[i+(int)(ridabit)][j+veerubit]=maatriks[i][j];
@@ -120,7 +120,7 @@ public class Oskar {
                     arv2-=1;
                     
                 } else{
-                    if(arv3<1){
+                    if(arv3<1){ //kui tehakse pilti rohkem kui 2 korda suuremaks
                         for (int k = 0; k < 1/arv3+1; k++) {
                             for (int l = 0; l < 1/arv3+1; l++) {
                                 if(j+l+veerubit<maatriks[0].length*arv-1&&(i+k+(int)ridabit<maatriks.length*arv-1)){
@@ -129,7 +129,7 @@ public class Oskar {
                         }
                         veerubit-=1;
                     }
-                    else {
+                    else {//kui tehakse pilti kaks kordfa suuremaks
                         if(j+veerubit<maatriks[0].length*2-1&&(i+(int)ridabit<maatriks.length*2-1)){
                         uusmaatriks[i+(int)ridabit][j+veerubit]=maatriks[i][j];
                         uusmaatriks[i+(int)ridabit][j+veerubit+1]=maatriks[i][j];
